@@ -14,5 +14,6 @@ public class Aula08ArraysMultidimensionais2 {
                 System.out.println(num + " ");
             }
         }
+
     }
 }
