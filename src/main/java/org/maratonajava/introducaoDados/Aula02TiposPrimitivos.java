@@ -1,4 +1,4 @@
-package org.maratonajava;
+package org.maratonajava.introducaoDados;
 
 public class Aula02TiposPrimitivos {
     public static void main(String[] args) {

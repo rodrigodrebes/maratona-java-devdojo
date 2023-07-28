@@ -1,4 +1,4 @@
-package org.maratonajava;
+package org.maratonajava.introducaoDados;
 
 public class Aula07Arrays1 {
     public static void main(String[] args) {
