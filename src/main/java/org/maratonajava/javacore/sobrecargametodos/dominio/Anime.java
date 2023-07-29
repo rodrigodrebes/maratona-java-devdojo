@@ -1,4 +1,4 @@
-package org.maratonajava.javacore.Csobrecargametodos.dominio;
+package org.maratonajava.javacore.sobrecargametodos.dominio;
 
 public class Anime {
 
