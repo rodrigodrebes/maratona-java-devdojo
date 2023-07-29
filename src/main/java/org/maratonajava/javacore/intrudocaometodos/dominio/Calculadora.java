@@ -1,4 +1,4 @@
-package org.maratonajava.javacore.intrudocaometodos;
+package org.maratonajava.javacore.intrudocaometodos.dominio;
 
 public class Calculadora {
 

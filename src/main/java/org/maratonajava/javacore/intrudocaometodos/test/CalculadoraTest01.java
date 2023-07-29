@@ -1,4 +1,6 @@
-package org.maratonajava.javacore.intrudocaometodos;
+package org.maratonajava.javacore.intrudocaometodos.test;
+
+import org.maratonajava.javacore.intrudocaometodos.dominio.Calculadora;
 
 public class CalculadoraTest01 {
     public static void main(String[] args) {
