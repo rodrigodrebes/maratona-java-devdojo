@@ -9,6 +9,10 @@ public class Producer {
     public Producer(String name){
         this.name = name;
     }
+    public Producer(Integer id, String name){
+        this.id= id;
+        this.name=name;
+    }
 
     public Producer() {
 
@@ -41,5 +45,13 @@ public class Producer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Producer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

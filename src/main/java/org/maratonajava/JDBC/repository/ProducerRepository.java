@@ -3,10 +3,10 @@ package org.maratonajava.JDBC.repository;
 import org.maratonajava.JDBC.conn.ConnectionFactory;
 import org.maratonajava.JDBC.dominio.Producer;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.swing.plaf.nimbus.State;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProducerRepository {
 
@@ -52,6 +52,30 @@ public class ProducerRepository {
         } catch(SQLException e){
             e.printStackTrace();
         }
+    }
+
+    // READ -- FIND ALL
+    public static List<Producer> findAll(){
+        String sql = "SELECT id, name FROM producer;";
+        List<Producer> producers = new ArrayList<>();
+        try(
+                Connection con = ConnectionFactory.getConnection();
+                Statement stmt = con.createStatement();
+                ResultSet rs =  stmt.executeQuery(sql);
+        ){
+
+           while(rs.next()){
+              var id =  rs.getInt("id");
+             var name =  rs.getString("name");
+               Producer producer = new Producer(id, name);
+               producers.add(producer);
+           }
+
+
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return producers;
     }
 
 }
