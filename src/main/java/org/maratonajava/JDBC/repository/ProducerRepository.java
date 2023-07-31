@@ -37,4 +37,21 @@ public class ProducerRepository {
             e.printStackTrace();
         }
     }
+
+
+    // UPDATE
+    public static void update(Producer producer){
+        String sql = "UPDATE producer SET name = ? WHERE id = ?;";
+
+        try(Connection con = ConnectionFactory.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)){
+
+            stmt.setString(1, producer.getName());
+            stmt.setInt(2, producer.getId());
+            stmt.executeUpdate();
+
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 }

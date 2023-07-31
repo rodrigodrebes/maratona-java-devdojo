@@ -16,5 +16,12 @@ public class ConnectionFactoryTest01 {
 
         // DELETE
         //ProducerService.delete(2);
+
+        //UPDATE
+        Producer producerupdate = new Producer();
+        producerupdate.setId(3);
+        producerupdate.setName("Mudei o nome");
+        ProducerService.update(producerupdate);
+
     }
 }
