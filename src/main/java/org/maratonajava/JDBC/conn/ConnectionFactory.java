@@ -16,14 +16,11 @@ public class ConnectionFactory {
         String password = "root";
 
         try {
-            Connection connection = DriverManager.getConnection(url, username,password);
+            return DriverManager.getConnection(url, username,password);
 
-            System.out.println(connection);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        return null;
 
     }
 
