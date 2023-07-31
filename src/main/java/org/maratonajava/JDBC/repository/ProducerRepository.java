@@ -10,12 +10,27 @@ import java.sql.Statement;
 
 public class ProducerRepository {
 
+    // INSERT
     public static void save(Producer producer){
         String sql = "INSERT INTO producer(name) VALUES(?);";
 
         try(Connection con = ConnectionFactory.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)){
 
             stmt.setString(1, producer.getName());
+            stmt.executeUpdate();
+
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    // DELETE
+    public static void delete(int idr){
+        String sql = "DELETE FROM producer WHERE (id = ?);";
+
+        try(Connection con = ConnectionFactory.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)){
+
+            stmt.setInt(1, idr);
             stmt.executeUpdate();
 
         } catch(SQLException e){
