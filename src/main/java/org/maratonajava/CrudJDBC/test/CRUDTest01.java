@@ -23,6 +23,7 @@ private static void producerMenu(){
     System.out.println("Digite o número da sua operação:");
     System.out.println("1. Buscar por Produtora");
     System.out.println("2. Deletar Produtor");
+    System.out.println("3. Salvar Produtor");
     System.out.println("0. Sair do Programa");
 }
 }

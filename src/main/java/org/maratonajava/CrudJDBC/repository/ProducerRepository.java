@@ -9,19 +9,6 @@ import java.util.List;
 
 public class ProducerRepository {
 
-    // INSERT
-    public static void save(Producer producer){
-        String sql = "INSERT INTO producer(name) VALUES(?);";
-
-        try(Connection con = ConnectionFactory.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)){
-
-            stmt.setString(1, producer.getName());
-            stmt.executeUpdate();
-
-        } catch(SQLException e){
-            e.printStackTrace();
-        }
-    }
 
     // DELETE
 
@@ -42,15 +29,24 @@ public class ProducerRepository {
     }
 
 
-    // UPDATE
-    public static void update(Producer producer){
-        String sql = "UPDATE producer SET name = ? WHERE id = ?;";
+    // SAVE
+    private static PreparedStatement createPrepareStatement(Connection conn, Producer producer) throws
+            SQLException{
+        String sql = "INSERT INTO producer (name) VALUES (?);";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, producer.getName());
+        return ps;
+    }
+    public static void save(Producer producer){
+        System.out.println("Salvando Produtor "+ producer);
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement ps = createPrepareStatement(conn, producer)){
 
-        try(Connection con = ConnectionFactory.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)){
+            int affectedRows = ps.executeUpdate();
 
-            stmt.setString(1, producer.getName());
-            stmt.setInt(2, producer.getId());
-            stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Criação de Produtor falhou.");
+            }
 
         } catch(SQLException e){
             e.printStackTrace();

@@ -14,15 +14,12 @@ public class ProducerService {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     public static void menu(int op){
-        switch(op){
-            case 1: find();
-            break;
 
-            case 2:
-                delete();
-                break;
-            default:
-                throw new IllegalArgumentException("Não é uma opção válida");
+        switch (op) {
+            case 1 -> find();
+            case 2 -> delete();
+            case 3-> save();
+            default -> throw new IllegalArgumentException("Não é uma opção válida");
         }
     }
 
@@ -62,6 +59,14 @@ private static void delete(){
 
 
 
+    private static void save(){
+
+        System.out.println("Digite o nome do Produtor que deseja adicionar");
+
+        String name = SCANNER.nextLine();
+        Producer producer = Producer.builder().name(name).build();
+        ProducerRepository.save(producer);
+    }
 
 
 
