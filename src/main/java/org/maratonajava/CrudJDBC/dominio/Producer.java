@@ -38,10 +38,7 @@ public class Producer {
 
     @Override
     public String toString() {
-        return "Producer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return String.format("Producer [id = %d, name = %s]", id, name);
     }
 
     public static class ProducerBuilder {

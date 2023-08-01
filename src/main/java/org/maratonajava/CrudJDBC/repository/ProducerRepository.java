@@ -24,12 +24,16 @@ public class ProducerRepository {
     }
 
     // DELETE
-    public static void delete(int idr){
-        String sql = "DELETE FROM producer WHERE (id = ?);";
 
-        try(Connection con = ConnectionFactory.getConnection(); PreparedStatement stmt = con.prepareStatement(sql)){
+    public static void delete(int id){
+        String sql = "DELETE FROM producer WHERE id = ?";
 
-            stmt.setInt(1, idr);
+        try(
+                Connection con = ConnectionFactory.getConnection();
+                PreparedStatement stmt = con.prepareStatement(sql);
+        ){
+
+            stmt.setInt(1, id);
             stmt.executeUpdate();
 
         } catch(SQLException e){
@@ -105,6 +109,10 @@ public class ProducerRepository {
         }
         return producers;
     }
+
+
+
+
 
 
 }
