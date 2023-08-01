@@ -30,5 +30,8 @@ public class ConnectionFactoryTest01 {
 //        List<Producer> producers = ProducerService.findAll();
 //        System.out.println(producers);
 
+        List<Producer> producers = ProducerService.findByName("NHK");
+        System.out.println(producers);
+
     }
 }

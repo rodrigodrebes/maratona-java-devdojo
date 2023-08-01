@@ -78,4 +78,30 @@ public class ProducerRepository {
         return producers;
     }
 
+
+
+    public static List<Producer> findByName(String name){
+        String sql = String.format("SELECT id, name FROM producer WHERE name like '%%%s%%'", name);
+
+        List<Producer> producers = new ArrayList<>();
+        try(
+                Connection con = ConnectionFactory.getConnection();
+                Statement stmt = con.createStatement();
+                ResultSet rs =  stmt.executeQuery(sql);
+        ){
+
+            while(rs.next()){
+                var id =  rs.getInt("id");
+                var producerName =  rs.getString("name");
+                Producer producer = new Producer(id, name);
+                producers.add(producer);
+            }
+
+
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return producers;
+    }
+
 }
