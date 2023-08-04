@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class StreamTest02 {
+public class StreamTest03 {
 
     // cria uma lista inserindo diretamente os objetos
     public static ArrayList<Novel> lista = new ArrayList<>(
@@ -22,18 +22,16 @@ public class StreamTest02 {
             new Novel("Estranhos sinais de saturno", 59.99))
     );
     public static void main(String[] args) {
+        // imprime todos os itens do array
+        lista.stream().forEach(System.out::println);
 
-        // lista os novels por título
-        // + recupera o título dos livros com preço menor ou igual a 19
-        List<String> titulos = lista.stream()
-                .sorted(
-                        Comparator.comparing(Novel::getTitle))
-                .filter(ln -> ln.getPrice() <= 18)
-                .map(Novel::getTitle)
-                .collect(Collectors.toList());
-
-        System.out.println(titulos);
-
+        // exibe a contagem de todos novels com preço menor ou igual a 7
+          Stream<Novel> stream = lista.stream();
+          long count = stream
+                  .distinct()
+                  .filter(n -> n.getPrice() <= 7)
+                  .count();
+          System.out.println(count);
 
     }
 }
