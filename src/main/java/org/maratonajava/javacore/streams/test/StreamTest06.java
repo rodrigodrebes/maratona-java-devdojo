@@ -50,6 +50,23 @@ public class StreamTest06 {
         System.out.println(collect);
 
 
+        // lista por categoria específica
+        List<Novel> dramaNovels = listadelivros.stream()
+                .filter(novel -> novel.getCategory() == Category.DRAMA)
+                .collect(Collectors.toList());
+
+        System.out.println(dramaNovels);
+
+
+        // contagem de categoria específica
+        Map<Category, Long> categoriaEspecifica =
+                listadelivros.stream()
+                        .collect(Collectors.groupingBy(Novel::getCategory, Collectors.counting()));
+
+        System.out.println(categoriaEspecifica);
+
+
+
     }
 }
 
