@@ -23,17 +23,23 @@ public class StreamTest02 {
     );
     public static void main(String[] args) {
 
-        // lista os novels por título
-        // + recupera o título dos livros com preço menor ou igual a 19
+        // recupera o título dos livros com preço menor ou igual a 19
         List<String> titulos = lista.stream()
                 .sorted(
                         Comparator.comparing(Novel::getTitle))
-                .filter(ln -> ln.getPrice() <= 18)
+                .filter(livro -> livro.getPrice() <= 18)
                 .map(Novel::getTitle)
                 .collect(Collectors.toList());
 
         System.out.println(titulos);
 
+        // lista os novels por título
+        List<String> titulos2 = lista.stream()
+                .sorted(
+                        Comparator.comparing(Novel::getTitle))
+                .map(Novel::getTitle)
+                .collect(Collectors.toList());
 
+        System.out.println(titulos2);
     }
 }
