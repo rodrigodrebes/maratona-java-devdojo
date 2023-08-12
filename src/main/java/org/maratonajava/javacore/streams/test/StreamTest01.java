@@ -6,6 +6,7 @@ import org.maratonajava.javacore.streams.dominio.Novel;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamTest01 {
 
@@ -35,5 +36,32 @@ public class StreamTest01 {
         }
 
         System.out.println(titulosLivros);
+
+        System.out.println("--------------------------------");
+
+        // utilizando Streams para listar todos os livros
+        lista.stream().forEach(System.out::println);
+
+        System.out.println("---------------------------------");
+
+        // utilizando Strems para listar livros com preço menor a 20
+        List<Novel> listaDeLivrosComPrecoMenorQueVinte = lista.stream()
+                .filter(novel -> novel.getPrice() <20)
+                .collect(Collectors.toList());
+
+        listaDeLivrosComPrecoMenorQueVinte.forEach(System.out::println);
+
+        System.out.println("---------------------------------");
+
+       List<Novel> listaDeLivrosComPrecoMenorAVinteEPorTitulo = lista.stream()
+               .filter(novel -> novel.getPrice()<20)
+               .sorted(Comparator.comparing(Novel::getTitle))
+               .collect(Collectors.toList());
+
+       listaDeLivrosComPrecoMenorAVinteEPorTitulo.forEach(System.out::println);
+       // foreach igual à estrutura abaixo
+       for(Novel livro : listaDeLivrosComPrecoMenorAVinteEPorTitulo){
+           System.out.println(livro);
+       }
     }
 }
