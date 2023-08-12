@@ -38,6 +38,23 @@ public class StreamTest05 {
         listadelivros.stream()
                 .max(Comparator.comparing(Novel::getPrice))
                 .ifPresent(System.out::println);
+
+        // preço dos produtos em ordem crescente
+        List<Double> precoDosLivros = listadelivros.stream()
+                .sorted(Comparator.comparing(Novel::getPrice))
+                .map(Novel::getPrice)
+                .collect(Collectors.toList());
+
+        precoDosLivros.forEach(System.out::println);
+
+
+        // preço dos produtos em ordem crescente
+        List<Novel> livrosPorPreco = listadelivros.stream()
+                .sorted(Comparator.comparing(Novel::getPrice))
+                .map(novel -> new Novel(novel.getTitle(), novel.getPrice()))
+                .collect(Collectors.toList());
+
+        livrosPorPreco.forEach(System.out::println);
     }
 }
 
